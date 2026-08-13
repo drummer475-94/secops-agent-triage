@@ -1,11 +1,11 @@
 # secops-agent-triage: AI Agentic Security Triage & MCP Workflow
 
 [![Python Version](https://img.shields.io/badge/python-3.11%2B-blue.svg)](https://www.python.org/)
-[![MCP Ready](https://img.shields.io/badge/MCP-1.0%2B-purple.svg)](https://modelcontextprotocol.io/)
+[![MCP Ready](https://img.shields.io/badge/MCP-tool--calling%20ready-purple.svg)](https://modelcontextprotocol.io/)
 [![Coverage](https://img.shields.io/badge/coverage-%3E90%25-brightgreen.svg)](pyproject.toml)
 [![License](https://img.shields.io/badge/license-MIT-green.svg)](LICENSE)
 
-`secops-agent-triage` is an enterprise-grade Model Context Protocol (MCP) and CLI security triage agent designed for automated Tier 1 SOC alert analysis. It ingests raw security logs (Windows Event Logs, AWS CloudTrail, Syslog), extracts IOC entities, orchestrates async threat intelligence lookups (VirusTotal, AbuseIPDB, AlienVault OTX), constructs verifiable step-by-step reasoning traces, and outputs structured JSON assessments mapped directly to **NIST SP 800-61 Rev 2** incident response phases and **MITRE ATT&CK v14** tactics/techniques.
+`secops-agent-triage` is a portfolio Model Context Protocol (MCP) and CLI security-triage implementation for repeatable Tier 1 SOC alert analysis. It ingests raw security logs (Windows Event Logs, AWS CloudTrail, Syslog), extracts IOC entities, orchestrates configurable threat-intelligence adapters (VirusTotal, AbuseIPDB, AlienVault OTX), constructs inspectable decision traces, and outputs structured JSON assessments with legacy **NIST SP 800-61 Rev. 2-style** phases and **MITRE ATT&CK** technique mappings. NIST SP 800-61 Rev. 3 is the current guidance; deterministic mock mode is provided for offline verification.
 
 ---
 
@@ -16,7 +16,7 @@
 | **Multi-Format Ingestion Engine** | Unified facade parsing Windows Event Logs (EVTX EventID 4688, 4624, 4625, 7045), AWS CloudTrail JSON, and Syslog (RFC 5424 / 3164) with Base64 PowerShell payload decoding. |
 | **Async Threat Intel Tools** | Parallel async API tools for VirusTotal, AbuseIPDB, and AlienVault OTX with deterministic mock fallback when API keys are omitted. |
 | **Verifiable Reasoning Engine** | Emits multi-step `ReasoningStep` traces detailing exact actions taken, observations, logical deductions, and confidence scores for auditability. |
-| **Industry Framework Mapping** | Automated mapping to MITRE ATT&CK technique IDs (e.g. `T1059.001`, `T1110.001`, `T1098`) and NIST SP 800-61 Rev 2 incident categories (`CAT 1`, `CAT 2`, `CAT 3`). |
+| **Industry Framework Mapping** | Mapping to MITRE ATT&CK technique IDs (e.g. `T1059.001`, `T1110.001`, `T1098`) and legacy NIST SP 800-61 Rev. 2 incident categories (`CAT 1`, `CAT 2`, `CAT 3`). |
 | **Dual Interface Architecture** | Standalone CLI (`secops-triage`) and Model Context Protocol (MCP) server supporting stdio transport. |
 | **Test Suite & Coverage** | Comprehensive 60-test pytest suite with **93.81% total coverage** testing parsers, tools, engine, CLI, MCP endpoints, and malformed-input resilience. |
 
